@@ -5,6 +5,9 @@ import stylesFn from './styles'
 const ListMain = () => {
     const styles = stylesFn();
     const navigation = useNavigation();
+
+    const regions = ['South West', 'North West', 'South East', 'North East', 'Mid West'];
+
     return (
         <SafeAreaView>
             <ScrollView>
@@ -16,31 +19,13 @@ const ListMain = () => {
                 <View style={styles.container}>
                     <Text style={styles.title}>List of Regions</Text>
                     <Text>Select a Region:</Text>
-                    <View style={styles.button}>
-                        <Pressable>
-                            <Text style={styles.region}>South West</Text>
-                        </Pressable>
-                    </View>
-                    <View style={styles.button}>
-                        <Pressable>
-                            <Text style={styles.region}>North West</Text>
-                        </Pressable>
-                    </View>
-                    <View style={styles.button}>
-                        <Pressable>
-                            <Text style={styles.region}>South East</Text>
-                        </Pressable>
-                    </View>
-                    <View style={styles.button}>
-                        <Pressable>
-                            <Text style={styles.region}>North East</Text>
-                        </Pressable>
-                    </View>
-                    <View style={styles.button}>
-                        <Pressable>
-                            <Text style={styles.region}>Mid West</Text>
-                        </Pressable>
-                    </View>
+                    {regions.map((region) => (
+                        <View key={region} style={styles.button}>
+                            <Pressable onPress={() => navigation.navigate('RegionDetail', { region })}>
+                                <Text style={styles.region}>{region}</Text>
+                            </Pressable>
+                        </View>
+                    ))}
                 </View>
             </ScrollView>
         </SafeAreaView>

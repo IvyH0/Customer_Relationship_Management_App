@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import WelcomeScreen from './Welcome';
 import ListMainScreen from './ListMain';
 import NewFormScreen from './NewForm';
+import RegionDetailScreen from './Region/RegionDetail';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -41,6 +42,7 @@ const Navigation = () => {
             <Stack.Navigator initialRouteName={'Welcome'}>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{headerShown: false}}/>
                 <Stack.Screen name='Main' component={TabNavigation} options={{headerShown: false}}/>
+                <Stack.Screen name='RegionDetail' component={RegionDetailScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

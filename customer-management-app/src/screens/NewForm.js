@@ -1,5 +1,5 @@
 import { ScrollView, SafeAreaView, View, StyleSheet, Text} from 'react-native'
-import NewForm from '../features/NewForm/index'
+import NewForm from '../features/Form/New/index'
 
 const NewFormScreen = () => {
     return (

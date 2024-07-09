@@ -1,12 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
-
-//imported screens
+import { Provider } from 'react-redux';
+import initializeStore from './src/store/index';
 import Navigation from './src/screens/index';
+
+const store = initializeStore()
 
 export default function App() {
   return (
-    <Navigation />
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+
   );
 }
 
