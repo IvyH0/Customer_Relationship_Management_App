@@ -5,9 +5,9 @@ import RegionDetail from '../../features/RegionDetail/index'
 const RegionDetailScreen = () => {
     return (
         <SafeAreaView>
-            <ScrollView>
+            {/* <ScrollView> */}
                 <RegionDetail />
-            </ScrollView>
+            {/* </ScrollView> */}
         </SafeAreaView>
     )
 }

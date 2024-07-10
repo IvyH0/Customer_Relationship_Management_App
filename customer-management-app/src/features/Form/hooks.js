@@ -9,12 +9,11 @@ export const useUpdateFields = () => {
     const fields = useSelector(state => state.form.form.fields) //extracts data from the redux store state. Accessing the form slice of the state.
     //form is the name of the action
 
-
     return {
         fields,
         setFormField: (field, value) => {
             console.log(`Updating field ${field} to ${value}`)
-            return dispatch(actions.setFormField({field, value})); // Dispatch the action correctly
+            return dispatch(actions.setFormField({field, value})) // Dispatch the action correctly
         }
     }
 };
