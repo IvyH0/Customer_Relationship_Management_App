@@ -22,9 +22,13 @@ const initialState = {
     },
     error: {
         message: 'Action failed. Please try again'
-    }
+    }, 
+    edit: {
+        status: PENDING,
+    },
     
-}
+};
+
 const reducers = {
     createCustomer: (state) => {
         state.create.status = REQUESTING;
@@ -49,7 +53,23 @@ const reducers = {
         state.error.message = payload; // Assuming an error field in the state for consistency
         state.load.status = ERROR;
     },
-
+    editCustomer:(state) => {
+        state.edit.status = REQUESTING; 
+    },
+    editCustomerResult: (state, { payload }) => {
+        state.list.customers = payload; 
+        state.form.fields = initialState.form.fields; 
+        state.edit.status = SUCCESS;
+        state.edit = initialState.edit;
+    },
+    editCustomerError: (state, { payload }) => {
+        state.error.message = payload;
+        state.edit.status = ERROR;
+        state.form.fields = initialState.form.fields;
+    },
+    editCustomerStatus: (state, { payload }) => {
+        state.edit.status = payload
+    },
     setFormField: (state, {payload}) => {
         const current = state.form.fields;
         const {field, value} = payload;
@@ -61,13 +81,13 @@ const reducers = {
 
         state.form.fields = fields;
     }
-}
+};
 
 const slice = createSlice({
     name, 
     initialState,
     reducers,
-})
+});
 
 export const {
     createCustomer,
@@ -76,7 +96,11 @@ export const {
     loadCustomers,
     loadCustomersResult,
     loadCustomersError,
+    editCustomer,
+    editCustomerResult,
+    editCustomerError,
+    editCustomerStatus,
     setFormField,
 } = slice.actions
 
-export default slice.reducer
+export default slice.reducer;

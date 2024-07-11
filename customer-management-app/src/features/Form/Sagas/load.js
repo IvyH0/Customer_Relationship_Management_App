@@ -12,7 +12,7 @@ export function* loadCustomersSaga(){
     try{
         const customers = yield get('CUSTOMERS_KEY');
 
-        yield delay(1500); //waiting time before data loads
+        yield delay(500); //waiting time before data loads
         yield put(actions.loadCustomersResult(customers));
     } catch (error){
        yield put(actions.loadCustomersResult([]));

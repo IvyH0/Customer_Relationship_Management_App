@@ -2,18 +2,22 @@
 import { Text, View, Pressable, TextInput } from 'react-native';
 import { useNavigation} from '@react-navigation/native'
 import { useUpdateFields , useCreateCustomer } from './hooks';
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
+import { PENDING, INPROGRESS, REQUESTING, SUCCESS, ERROR } from '../../utilities/helpers'
 import stylesFn from './styles'
 
-
-const Form = ({handleSubmit}) => {
+const Form = ({handleSubmit, status, customerID, isEditForm=false}) => {
     const styles = stylesFn();
     const {navigate} = useNavigation();
-    const { fields, setFormField } = useUpdateFields()
+    const { fields, setFormField, loadCustomerDetails } = useUpdateFields(customerID)
     const [selectedRegion, setSelectedRegion] = useState(''); 
     const [selectedActive, setSelectedActive] = useState('');
 
-    console.log (setFormField)
+    useEffect(() => {
+        if (isEditForm && customerID) {
+            loadCustomerDetails(customerID)
+        }
+    }, [customerID, isEditForm]);
 
     const {
         first_name, 
@@ -45,7 +49,12 @@ const Form = ({handleSubmit}) => {
         handleSubmit();
         setSelectedRegion('');
         setSelectedActive('');
-        navigate('Home');;
+        // navigate('Home');
+        if (isEditing) {
+            navigate('Edit Customer', { customerID });
+        } else {
+            navigate('Home');
+        }
     };
 
     return (
@@ -94,7 +103,11 @@ const Form = ({handleSubmit}) => {
                 </View>
             </View>
 
-            <Pressable onPress={onSubmit} style={styles.button}>
+            <Pressable 
+                onPress={onSubmit} 
+                style={styles.button}
+                disabled={status !== PENDING && status !== INPROGRESS}
+            >
                 <Text>Submit</Text>
             </Pressable>
 

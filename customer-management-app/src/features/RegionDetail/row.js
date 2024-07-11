@@ -1,19 +1,33 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, Pressable} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import stylesFn from './styles'
 
 const Row = ({ item }) => {
-    const { navigate } = useNavigation()
+    const styles = stylesFn(); 
+    const navigation = useNavigation();
+    const borderColor = item.active === 'active' ? 'green' : 'red';
+
+    const container = {
+        ...styles.container,
+        borderColor: borderColor,
+    };
 
     return (
-        <View onPress={() => navigate('Edit Animal', { customerID: item.id })}>
-            <View key={item.id} style={{ borderWidth: 1, padding: 10, margin: 10 }}>
-                <Text key={'id'}>ID: {item.id}</Text>
-                <Text key={'fn'}>First Name: {item.first_name}</Text>
-                <Text key={'ln'}>Last Name: {item.last_name}</Text>
-            </View>
+        <View key={item.id} style={container}>
+            <Pressable onPress={() => navigation.navigate('Edit Customer', { customerID: item.id })} >
+                <Text style={styles.name}>{item.first_name} {item.last_name}</Text>
+                <View style={styles.detail}>
+                    <Text style={styles.header}>ID: </Text>
+                    <Text style={styles.text}> {item.id}</Text>
+                </View>
+                <View style={styles.detail}>
+                    <Text style={styles.header}>Active/In-Active: </Text>
+                    <Text style={styles.text}> {item.active}</Text>
+                </View>
+            </Pressable>
         </View>
-    )
-}
+    );
+};
 
-export default Row
+export default Row;

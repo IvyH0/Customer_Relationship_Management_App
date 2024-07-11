@@ -5,7 +5,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import WelcomeScreen from './Welcome';
 import ListMainScreen from './ListMain';
-import NewFormScreen from './NewForm';
+import NewFormScreen from './Form/New';
+import EditFormScreen from './Form/Edit';
 import RegionDetailScreen from './Region/RegionDetail';
 
 const Stack = createNativeStackNavigator();
@@ -43,6 +44,7 @@ const Navigation = () => {
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{headerShown: false}}/>
                 <Stack.Screen name='Main' component={TabNavigation} options={{headerShown: false}}/>
                 <Stack.Screen name='RegionDetail' component={RegionDetailScreen} />
+                <Stack.Screen name='Edit Customer' component={EditFormScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

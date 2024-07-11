@@ -35,6 +35,7 @@ const stylesFn = () => {
         text: {
             marginTop: 10, 
             marginLeft: 20, 
+            fontWeight: 'bold',
         },
         choiceBtn: {
             backgroundColor: 'lightgrey', 
