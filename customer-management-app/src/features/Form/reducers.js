@@ -37,21 +37,12 @@ const reducers = {
         state.list.customers = payload; // Update customer list
         state.form.fields = initialState.form.fields; // Reset form fields 
         state.create.status = SUCCESS; // Update status on success
+        state.create = initialState.create
     },
     createCustomerError: (state, { payload }) => {
         state.list.error = payload; // Handle error
         state.list.status = ERROR; // Update status on error
-    },
-    loadCustomers: (state) => {
-        state.load.status = REQUESTING;
-    },
-    loadCustomersResult: (state, { payload }) => {
-        state.list.customers = payload; 
-        state.load.status = SUCCESS;
-    },
-    loadCustomersError: (state, { payload }) => { // Added for handling load errors
-        state.error.message = payload; // Assuming an error field in the state for consistency
-        state.load.status = ERROR;
+        state.form.fields = initialState.form.fields
     },
     editCustomer:(state) => {
         state.edit.status = REQUESTING; 
@@ -69,6 +60,17 @@ const reducers = {
     },
     editCustomerStatus: (state, { payload }) => {
         state.edit.status = payload
+    },
+    loadCustomers: (state) => {
+        state.load.status = REQUESTING;
+    },
+    loadCustomersResult: (state, { payload }) => {
+        state.list.customers = payload; 
+        state.load.status = SUCCESS;
+    },
+    loadCustomersError: (state, { payload }) => { // Added for handling load errors
+        state.error.message = payload; // Assuming an error field in the state for consistency
+        state.load.status = ERROR;
     },
     setFormField: (state, {payload}) => {
         const current = state.form.fields;

@@ -1,5 +1,6 @@
 import { takeLatest, put, delay, select } from 'redux-saga/effects';
 import * as actions from '../reducers'
+import {set} from '../../../utilities/asyncStorage';
 
 export function* watchEditCustomer() {
     yield takeLatest(actions.editCustomer.toString(), editCustomerSaga);
@@ -7,7 +8,7 @@ export function* watchEditCustomer() {
 
 export function* editCustomerSaga(action) {
     console.log('Starting fetch request to API -- EDIT');
-    const customerID = action.payload;
+    const selectedCustomer = action.payload;
 
     try{
         const fields = yield select(state => state.form.form.fields);
@@ -15,14 +16,15 @@ export function* editCustomerSaga(action) {
 
         const result = customers.map(customer => {
             // if customer is not the one being updated, return it unchanged
-            if(customer.id !== customerID) return customer;
+            if(customer.id !== selectedCustomer.id) return customer;
 
             // otherwise, if customer is the one being updated
             // return the new fields instead of the old ones
-            return fields;
+            return { ...customer, ...fields };
         });
 
         yield delay(500);
+        yield set('CUSTOMERS_KEY', result);
 
         yield put(actions.editCustomerResult(result));
     } catch (error) {

@@ -8,6 +8,7 @@ import ListMainScreen from './ListMain';
 import NewFormScreen from './Form/New';
 import EditFormScreen from './Form/Edit';
 import RegionDetailScreen from './Region/RegionDetail';
+import CustomerDetailsScreen from './Customers';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,6 +46,7 @@ const Navigation = () => {
                 <Stack.Screen name='Main' component={TabNavigation} options={{headerShown: false}}/>
                 <Stack.Screen name='RegionDetail' component={RegionDetailScreen} />
                 <Stack.Screen name='Edit Customer' component={EditFormScreen} />
+                <Stack.Screen name='Customer Details' component={CustomerDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

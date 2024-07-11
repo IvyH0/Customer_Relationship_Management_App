@@ -15,7 +15,7 @@ export const useUpdateFields = () => {
             console.log(`Updating field ${field} to ${value}`)
             return dispatch(actions.setFormField({field, value})) // Dispatch the action correctly
         }
-    }
+    };
 };
 
 export const useCreateCustomer = () => {
@@ -25,7 +25,7 @@ export const useCreateCustomer = () => {
             console.log('Dispatching CREATE_CUSTOMER action')
             dispatch(actions.createCustomer())
         }
-    }
+    };
 };
 
 export const useListCustomers = (region) => {
@@ -47,14 +47,14 @@ export const useEditCustomerStatus = () => {
     return useSelector(state => state.form.edit.status)
 };
   
-export const useEditCustomer = (customerID) => {
+export const useEditCustomer = (selectedCustomer) => {
     const dispatch = useDispatch();
     const status = useEditCustomerStatus();
 
     return {
         onSubmit: () => {
             console.log('Dispatching EDIT_CUSTOMER action')
-            dispatch(actions.editCustomer(customerID))
+            dispatch(actions.editCustomer(selectedCustomer))
         },
     };
 };

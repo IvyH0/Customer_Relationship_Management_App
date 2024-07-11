@@ -6,11 +6,11 @@ import Form from '../Form';
 
 const EditForm = () => {
     const { params } = useRoute();
-    const { customerID } = params;
-    const { status, onSubmit} = useEditCustomer(customerID); 
+    const { editCustomer } = params;
+    const { status, onSubmit} = useEditCustomer(editCustomer); 
 
     return (
-        <Form customerID={customerID} handleSubmit={onSubmit} status={status} isEditing={true}/>
+        <Form selectedCustomer={editCustomer} handleSubmit={onSubmit} status={status}/>
     );
 }
 

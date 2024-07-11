@@ -6,18 +6,13 @@ import React, { useState, useEffect } from 'react';
 import { PENDING, INPROGRESS, REQUESTING, SUCCESS, ERROR } from '../../utilities/helpers'
 import stylesFn from './styles'
 
-const Form = ({handleSubmit, status, customerID, isEditForm=false}) => {
+const Form = ({handleSubmit, status, selectedCustomer}) => {
+    //selectedCustomer is an object that contains the customer details
     const styles = stylesFn();
     const {navigate} = useNavigation();
-    const { fields, setFormField, loadCustomerDetails } = useUpdateFields(customerID)
-    const [selectedRegion, setSelectedRegion] = useState(''); 
-    const [selectedActive, setSelectedActive] = useState('');
-
-    useEffect(() => {
-        if (isEditForm && customerID) {
-            loadCustomerDetails(customerID)
-        }
-    }, [customerID, isEditForm]);
+    const { fields, setFormField} = useUpdateFields(selectedCustomer)
+    const [selectedRegion, setSelectedRegion] = useState(); 
+    const [selectedActive, setSelectedActive] = useState();
 
     const {
         first_name, 
@@ -49,12 +44,7 @@ const Form = ({handleSubmit, status, customerID, isEditForm=false}) => {
         handleSubmit();
         setSelectedRegion('');
         setSelectedActive('');
-        // navigate('Home');
-        if (isEditing) {
-            navigate('Edit Customer', { customerID });
-        } else {
-            navigate('Home');
-        }
+        navigate('Home');
     };
 
     return (

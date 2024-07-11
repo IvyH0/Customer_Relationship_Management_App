@@ -15,7 +15,7 @@ const Row = ({ item }) => {
 
     return (
         <View key={item.id} style={container}>
-            <Pressable onPress={() => navigation.navigate('Edit Customer', { customerID: item.id })} >
+            <Pressable onPress={() => navigation.navigate('Customer Details', { selectedCustomer: item})} >
                 <Text style={styles.name}>{item.first_name} {item.last_name}</Text>
                 <View style={styles.detail}>
                     <Text style={styles.header}>ID: </Text>
