@@ -1,20 +1,23 @@
 //base skeleton of the form 
 import { Text, View, Pressable, TextInput } from 'react-native';
-import { useNavigation} from '@react-navigation/native'
+import { useNavigation, useRoute} from '@react-navigation/native'
 import { useUpdateFields , useCreateCustomer } from './hooks';
 import React, { useState, useEffect } from 'react'; 
 import { PENDING, INPROGRESS, REQUESTING, SUCCESS, ERROR } from '../../utilities/helpers'
 import stylesFn from './styles'
 
 const Form = ({handleSubmit, status, editCustomer}) => {
-    //selectedCustomer is an object that contains the customer details
     const styles = stylesFn();
     const {navigate} = useNavigation();
     const { fields, setFormField} = useUpdateFields(editCustomer)
-    const [selectedRegion, setSelectedRegion] = useState(); 
-    const [selectedActive, setSelectedActive] = useState();
+    const [selectedRegion, setSelectedRegion] = useState(fields.region); 
+    const [selectedActive, setSelectedActive] = useState(fields.active);
     
-    console.log(editCustomer)
+    useEffect(() => {
+        // Update selectedActive and selectedRegion when fields change, e.g., when editCustomer changes
+        setSelectedActive(fields.active);
+        setSelectedRegion(fields.region);
+    }, [fields]);
 
     const {
         first_name, 
