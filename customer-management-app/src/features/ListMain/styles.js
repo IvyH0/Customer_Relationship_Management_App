@@ -11,6 +11,15 @@ const stylesFn = () => {
             alignItems: 'center',
             textTransform: 'uppercase',
         },
+        choiceBtn: {
+            backgroundColor: 'lightgrey',
+            marginTop: 5,
+            marginBottom: 5,
+            alignSelf: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textTransform: 'uppercase',
+        },
         btnNew: {
             color: 'white',
             backgroundColor: 'tomato',

@@ -35,19 +35,28 @@ export const useCreateCustomer = () => {
     };
 };
 
+// export const useListCustomers = (region) => {
+//     const dispatch = useDispatch();
+//     useEffect(() => {
+//         dispatch(actions.loadCustomers())
+//     }, [region]);
+//     const customers = useSelector(state => state.form.list.customers || []);
+
+//     // Memoize the filtered customers list
+//     const filteredCustomers = useMemo(() => {
+//     return customers.filter(customer => customer.region === region);
+//     }, [customers, region]);
+
+//     return filteredCustomers;
+// }; 
+
 export const useListCustomers = (region) => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(actions.loadCustomers())
-    }, [region]);
-    const customers = useSelector(state => state.form.list.customers || []);
-
-     // Memoize the filtered customers list
-     const filteredCustomers = useMemo(() => {
-        return customers.filter(customer => customer.region === region);
-    }, [customers, region]);
-
-    return filteredCustomers;
+        dispatch(actions.loadCustomers(region));
+    }, [dispatch, region]);
+    console.log('selected region:', region)
+    return useSelector(state => state.form.list.customers); 
 }; 
 
 export const useEditCustomerStatus = () => {

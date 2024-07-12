@@ -19,22 +19,18 @@ const RegionDetail = () => {
     
     return (
         <View>
-            {(customers && customers.length > 0) ? (
-                <FlatList
-                    data={customers || []}
-                    renderItem={(props) => <Row {...props} />}
-                    keyExtractor={(item) => item.id}
-                />
-            ) : (
-                <>
-                    <Text style={styles.emptyText}>{'No Customers'}</Text>
-                    <View style={styles.button}>
-                        <Pressable onPress={() => navigation.navigate('New')}>
-                            <Text style={styles.btnNew}>Add Customer</Text>
-                        </Pressable>
-                    </View>
-                </>
-            )}
+            <FlatList
+                data={customers}
+                renderItem={(props) => <Row {...props} />}
+                keyExtractor={(item) => item.id}
+            />
+            <>
+                <View style={styles.button}>
+                    <Pressable onPress={() => navigation.navigate('New')}>
+                        <Text style={styles.btnNew}>Add Customer</Text>
+                    </Pressable>
+                </View>
+            </>
         </View>
     );
 }

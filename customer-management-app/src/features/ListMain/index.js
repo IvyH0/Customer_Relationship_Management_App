@@ -1,11 +1,11 @@
 import { SafeAreaView, ScrollView, Text, View, Button, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import stylesFn from './styles'
 
 const ListMain = () => {
     const styles = stylesFn();
     const navigation = useNavigation();
-
     const regions = ['South West', 'North West', 'South East', 'North East', 'Mid West'];
 
     return (
@@ -21,7 +21,9 @@ const ListMain = () => {
                     <Text>Select a Region:</Text>
                     {regions.map((region) => (
                         <View key={region} style={styles.button}>
-                            <Pressable onPress={() => navigation.navigate('RegionDetail', { region })}>
+                            <Pressable 
+                                onPress={() => navigation.navigate('RegionDetail', { region })}
+                            >
                                 <Text style={styles.region}>{region}</Text>
                             </Pressable>
                         </View>

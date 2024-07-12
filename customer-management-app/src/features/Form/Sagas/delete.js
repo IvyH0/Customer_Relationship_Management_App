@@ -20,7 +20,7 @@ export function* deleteCustomerSaga(action) {
             throw new Error(`Customer with ID ${selectedCustomer} not found.`);
         }
 
-        yield delay(500);
+        // yield delay(500);
         // Assuming remove function requires the ID of the customer to delete
         yield remove('CUSTOMERS_KEY', selectedCustomer);
 

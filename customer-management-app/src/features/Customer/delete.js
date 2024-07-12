@@ -15,7 +15,7 @@ const DeleteCustomer = () => {
     const handlePress = () => {
         onSubmit(deleteCustomer);
         navigation.navigate('Home');
-    };
+    }
 
     return(
         <View>

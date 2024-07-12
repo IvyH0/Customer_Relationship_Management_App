@@ -24,8 +24,6 @@ const Form = ({handleSubmit, status, editCustomer}) => {
         last_name,
     } = fields; 
 
-    console.log('Fields:', fields)
-
     const handleSelectRegion = (region) => {
         setFormField('region', region)
         setSelectedRegion(region)
