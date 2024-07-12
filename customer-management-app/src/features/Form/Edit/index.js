@@ -10,7 +10,7 @@ const EditForm = () => {
     const { status, onSubmit} = useEditCustomer(editCustomer); 
 
     return (
-        <Form selectedCustomer={editCustomer} handleSubmit={onSubmit} status={status}/>
+        <Form editCustomer={editCustomer} handleSubmit={onSubmit} status={status}/>
     );
 }
 

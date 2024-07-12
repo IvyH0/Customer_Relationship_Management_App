@@ -16,7 +16,7 @@ export function* editCustomerSaga(action) {
 
         const result = customers.map(customer => {
             // if customer is not the one being updated, return it unchanged
-            if(customer.id !== selectedCustomer.id) return customer;
+            if(customer.id !== selectedCustomer) return customer;
 
             // otherwise, if customer is the one being updated
             // return the new fields instead of the old ones

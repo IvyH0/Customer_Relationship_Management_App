@@ -4,10 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo }  from 'react';
 import * as actions from './reducers';
 
-export const useUpdateFields = () => {
+export const useUpdateFields = (editCustomer = null) => {
     const dispatch = useDispatch() //access to redux store dispatch. used to send actions to the store
     const fields = useSelector(state => state.form.form.fields) //extracts data from the redux store state. Accessing the form slice of the state.
-    //form is the name of the action
+    const status = useSelector( state => state.form.edit.status) //extracts data from the redux store state. Accessing the edit slice of the state.
+    //checking status of initial state of useUpdateFields() to check if field values are non-null
+
+    useEffect(() => {
+        if(editCustomer && status === 'PENDING') {
+            dispatch(actions.setForm(editCustomer))
+        }
+    }, [editCustomer, status])
 
     return {
         fields,
@@ -47,14 +54,14 @@ export const useEditCustomerStatus = () => {
     return useSelector(state => state.form.edit.status)
 };
   
-export const useEditCustomer = (selectedCustomer) => {
+export const useEditCustomer = (editCustomer) => {
     const dispatch = useDispatch();
     const status = useEditCustomerStatus();
 
     return {
         onSubmit: () => {
             console.log('Dispatching EDIT_CUSTOMER action')
-            dispatch(actions.editCustomer(selectedCustomer))
+            dispatch(actions.editCustomer(editCustomer))
         },
     };
 };

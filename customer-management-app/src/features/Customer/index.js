@@ -33,7 +33,7 @@ const CustomerDetails = () => {
                 <Pressable onPress={() => navigation.navigate('Delete')}>
                     <Text style={styles.btnNew}>Delete Customer</Text>
                 </Pressable>
-                <Pressable onPress={() => navigation.navigate('Edit Customer', { editCustomer: selectedCustomer })}>
+                <Pressable onPress={() => navigation.navigate('Edit Customer', { editCustomer: selectedCustomer.id })}>
                     <Text style={styles.btnNew}>Edit Customer</Text>
                 </Pressable>
             </View>

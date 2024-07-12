@@ -72,6 +72,15 @@ const reducers = {
         state.error.message = payload; // Assuming an error field in the state for consistency
         state.load.status = ERROR;
     },
+    setForm: (state, { payload }) => {
+        const customer = state.list.customers.find(a => a.id === payload)
+
+        if (customer) {
+            state.form.fields = customer
+        } else {
+            state.error.message = `could not find customer with id: ${payload}`
+        }
+    },
     setFormField: (state, {payload}) => {
         const current = state.form.fields;
         const {field, value} = payload;
@@ -102,6 +111,7 @@ export const {
     editCustomerResult,
     editCustomerError,
     editCustomerStatus,
+    setForm,
     setFormField,
 } = slice.actions
 

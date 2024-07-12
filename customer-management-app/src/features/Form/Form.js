@@ -6,18 +6,22 @@ import React, { useState, useEffect } from 'react';
 import { PENDING, INPROGRESS, REQUESTING, SUCCESS, ERROR } from '../../utilities/helpers'
 import stylesFn from './styles'
 
-const Form = ({handleSubmit, status, selectedCustomer}) => {
+const Form = ({handleSubmit, status, editCustomer}) => {
     //selectedCustomer is an object that contains the customer details
     const styles = stylesFn();
     const {navigate} = useNavigation();
-    const { fields, setFormField} = useUpdateFields(selectedCustomer)
+    const { fields, setFormField} = useUpdateFields(editCustomer)
     const [selectedRegion, setSelectedRegion] = useState(); 
     const [selectedActive, setSelectedActive] = useState();
+    
+    console.log(editCustomer)
 
     const {
         first_name, 
         last_name,
     } = fields; 
+
+    console.log('Fields:', fields)
 
     const handleSelectRegion = (region) => {
         setFormField('region', region)
