@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native-web";
 
 const stylesFn = () => {
+    const title = {
+        fontWeight: 'bold',
+        fontSize: 15,
+    };
+
     return StyleSheet.create({
         container: {
             backgroundColor: 'white',
@@ -15,8 +20,7 @@ const stylesFn = () => {
             margin: 5,
         },
         header: {
-            fontWeight: 'bold',
-            fontSize: 15,
+            ...title,
         },
         text: {
             paddingLeft: 5, 
@@ -30,13 +34,18 @@ const stylesFn = () => {
             textTransform: 'uppercase',
             flexDirection: 'row',
         },
-        btnNew: {
+        btn: {
             color: 'white',
             backgroundColor: 'tomato',
             padding: 10,
             borderRadius: 5,
             fontWeight: 'bold'
         },
+        delTitle: {
+            ...title,
+            textAlign: 'center',
+            margin: 10, 
+        }
     });
 }
 

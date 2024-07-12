@@ -9,6 +9,7 @@ import NewFormScreen from './Form/New';
 import EditFormScreen from './Form/Edit';
 import RegionDetailScreen from './Region/RegionDetail';
 import CustomerDetailsScreen from './Customers';
+import DeleteCustomerScreen from './Delete';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,7 @@ const Navigation = () => {
                 <Stack.Screen name='RegionDetail' component={RegionDetailScreen} />
                 <Stack.Screen name='Edit Customer' component={EditFormScreen} />
                 <Stack.Screen name='Customer Details' component={CustomerDetailsScreen} />
+                <Stack.Screen name='Delete' component={DeleteCustomerScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

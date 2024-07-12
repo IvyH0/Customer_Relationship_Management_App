@@ -26,7 +26,9 @@ const initialState = {
     edit: {
         status: PENDING,
     },
-    
+    delete:{
+        status: PENDING,
+    }
 };
 
 const reducers = {
@@ -72,6 +74,24 @@ const reducers = {
         state.error.message = payload; // Assuming an error field in the state for consistency
         state.load.status = ERROR;
     },
+    deleteCustomer: (state, {payload}) => {
+        const customer = state.list.customers.find(a => a.id === payload);
+        if (customer) {
+            state.delete.status = REQUESTING;
+        } else {
+            state.error.message = `could not find customer with id: ${payload}`;
+        }
+        state.delete.status = PENDING;
+    },
+    deleteCustomerResult: (state, { payload }) => {
+        state.list.customers = state.list.customers.filter(a => a.id !== payload);
+        state.delete.status = SUCCESS;
+        state.delete = initialState.delete;
+    },
+    deleteCustomerError: (state, { payload }) => {
+        state.error.message = payload;
+        state.delete.status = ERROR;
+    },
     setForm: (state, { payload }) => {
         const customer = state.list.customers.find(a => a.id === payload)
 
@@ -111,6 +131,9 @@ export const {
     editCustomerResult,
     editCustomerError,
     editCustomerStatus,
+    deleteCustomer,
+    deleteCustomerResult,
+    deleteCustomerError,
     setForm,
     setFormField,
 } = slice.actions

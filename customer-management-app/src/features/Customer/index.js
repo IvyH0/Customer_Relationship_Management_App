@@ -30,11 +30,11 @@ const CustomerDetails = () => {
                 </View>
             </View>
             <View style={styles.button}>
-                <Pressable onPress={() => navigation.navigate('Delete')}>
-                    <Text style={styles.btnNew}>Delete Customer</Text>
+                <Pressable onPress={() => navigation.navigate('Delete', {deleteCustomer: selectedCustomer.id})}>
+                    <Text style={styles.btn}>Delete Customer</Text>
                 </Pressable>
                 <Pressable onPress={() => navigation.navigate('Edit Customer', { editCustomer: selectedCustomer.id })}>
-                    <Text style={styles.btnNew}>Edit Customer</Text>
+                    <Text style={styles.btn}>Edit Customer</Text>
                 </Pressable>
             </View>
         </View>

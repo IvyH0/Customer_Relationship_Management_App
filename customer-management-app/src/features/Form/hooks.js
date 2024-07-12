@@ -65,3 +65,13 @@ export const useEditCustomer = (editCustomer) => {
         },
     };
 };
+
+export const useDeleteCustomer = () => {
+    const dispatch = useDispatch();
+    return {
+        onSubmit: (id) => {
+            console.log('Dispatching DELETE_CUSTOMER action')
+            dispatch(actions.deleteCustomer(id))
+        }
+    };
+};
