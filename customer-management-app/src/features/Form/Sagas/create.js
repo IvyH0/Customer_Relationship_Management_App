@@ -20,10 +20,17 @@ export function* createCustomerSaga() {
         const fields = yield select(state => state.form.form.fields); 
         const customers = yield select(state => state.form.list.customers);
 
-        //mock request to API
-        //customer object containing customer details and saved to a database
+        const allCustomers = yield select(state => state.form.list.customers);
+        let newId = customers.length + 1; 
+        const customerIds = customers.map(customer => customer.id);
+
+        // Increment newId until a unique ID is found
+        while (customerIds.includes(newId)) {
+            newId += 1;
+        }
+
         const customer = {
-            id: customers.length + 1,
+            id: newId,
             ...fields,
         }
 

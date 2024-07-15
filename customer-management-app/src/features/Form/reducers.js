@@ -81,13 +81,25 @@ const reducers = {
         } else {
             state.error.message = `could not find customer with id: ${payload}`;
         }
-        state.delete.status = PENDING;
     },
     deleteCustomerResult: (state, { payload }) => {
-        state.list.customers = state.list.customers.filter(a => a.id !== payload);
+        state.list.customers = state.list.customers.filter(customer => customer.id !== payload);
         state.delete.status = SUCCESS;
         state.delete = initialState.delete;
     },
+    // deleteCustomerResult: (state, { payload }) => {
+    //     return {
+    //         ...state,
+    //         list: {
+    //             ...state.list,
+    //             customers: state.list.customers.filter(a => a.id !== payload)
+    //         },
+    //         delete: {
+    //             ...initialState.delete,
+    //             status: SUCCESS
+    //         }
+    //     };
+    // },
     deleteCustomerError: (state, { payload }) => {
         state.error.message = payload;
         state.delete.status = ERROR;
