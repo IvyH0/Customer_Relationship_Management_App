@@ -22,11 +22,7 @@ const stylesFn = () => {
         header: {
             ...title,
         },
-        text: {
-            paddingLeft: 5, 
-            textTransform: 'capitalize',
-        },
-        button: {
+        btnContainer: {
             padding: 10, 
             margin: 10, 
             justifyContent: 'space-around',
@@ -37,14 +33,11 @@ const stylesFn = () => {
         btn: {
             color: 'white',
             backgroundColor: 'tomato',
-            padding: 10,
-            borderRadius: 5,
-            fontWeight: 'bold'
         },
-        delTitle: {
+        delete: {
             ...title,
             textAlign: 'center',
-            margin: 10, 
+            margin: 10,
         }
     });
 }

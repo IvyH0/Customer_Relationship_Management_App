@@ -33,21 +33,9 @@ const stylesFn = () => {
             fontSize: 20,
             margin: 10, 
         },
-        button: {
-            padding: 10, 
-            marginTop: 5,
-            marginBottom: 5,
-            alignSelf: 'center',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textTransform: 'uppercase',
-        },
-        btnNew: {
-            color: 'white',
+        addBtn: {
             backgroundColor: 'tomato',
-            padding: 10,
-            borderRadius: 5,
-            fontWeight: 'bold'
+            color: 'white',
         },
 
 

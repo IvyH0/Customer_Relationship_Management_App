@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { View, Text, Pressable } from 'react-native';
+import CustomButton from '../../components/Button';
 import stylesFn from './styles';
 
 const CustomerDetails = () => {
@@ -29,13 +30,17 @@ const CustomerDetails = () => {
                     <Text style={styles.value}> {selectedCustomer.active}</Text>
                 </View>
             </View>
-            <View style={styles.button}>
-                <Pressable onPress={() => navigation.navigate('Delete', {deleteCustomer: selectedCustomer.id})}>
-                    <Text style={styles.btn}>Delete Customer</Text>
-                </Pressable>
-                <Pressable onPress={() => navigation.navigate('Edit Customer', { editCustomer: selectedCustomer.id })}>
-                    <Text style={styles.btn}>Edit Customer</Text>
-                </Pressable>
+            <View style={styles.btnContainer}>
+                <CustomButton 
+                    onPress={() => navigation.navigate('Delete', {deleteCustomer: selectedCustomer.id})}
+                    title='Delete Customer'
+                    style={styles.btn}
+                />
+                <CustomButton 
+                    onPress={() => navigation.navigate('Edit Customer', { editCustomer: selectedCustomer.id })}
+                    title='Edit Customer'
+                    style={styles.btn}
+                />
             </View>
         </View>
     );

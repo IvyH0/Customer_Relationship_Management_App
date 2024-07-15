@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Form';
+import Form from '../../../components/Form';
 import { useCreateCustomer } from '../hooks';
 
 const NewForm = () => {

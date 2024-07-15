@@ -2,6 +2,7 @@ import React from 'react';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { View, Text, Pressable } from 'react-native';
 import { useDeleteCustomer } from '../Form/hooks';
+import CustomButton from '../../components/Button';
 import stylesFn from './styles';
 
 const DeleteCustomer = () => {
@@ -19,12 +20,8 @@ const DeleteCustomer = () => {
 
     return(
         <View>
-            <Text style={styles.delTitle}>Are you sure you want to delete this customer?</Text>
-            <View style={styles.button}>
-                <Pressable onPress={handlePress}>
-                    <Text style={styles.btn}>Confirm</Text>
-                </Pressable>
-            </View>
+            <Text style={styles.delete}>Are you sure you want to delete this customer?</Text>
+            <CustomButton onPress={handlePress} title='Confirm' style={styles.btn}/>
         </View>
     )
 }

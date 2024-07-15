@@ -4,6 +4,7 @@ import { useListCustomers } from '../Form/hooks';
 import Row from './row';
 import React, { useEffect } from 'react';
 import { Text, View, FlatList, Pressable} from 'react-native';
+import CustomButton from '../../components/Button';
 import stylesFn from './styles';
 
 const RegionDetail = () => {
@@ -25,11 +26,7 @@ const RegionDetail = () => {
                 keyExtractor={(item) => item.id}
             />
             <>
-                <View style={styles.button}>
-                    <Pressable onPress={() => navigation.navigate('New')}>
-                        <Text style={styles.btnNew}>Add Customer</Text>
-                    </Pressable>
-                </View>
+                <CustomButton onPress={() => navigation.navigate('New')} title='Add Customer' style={styles.addBtn}/>
             </>
         </View>
     );
